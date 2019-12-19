@@ -1,0 +1,216 @@
+Create new Validation Check.
+---
+tags:
+  - Validation Checks
+parameters:
+  - name: new_validation
+    in: body
+    required: true
+    schema:
+      id: data_vc
+      properties:
+        dataset_id: 
+          type: integer
+          required: true
+          default: 6
+        description:
+          type: string
+          required: true
+          default: description test
+        dimension_id:
+          type: integer
+          required: true
+          default: 4
+        documentation_url: 
+          type: string
+          required: true
+          default: https://wiki.homeawaycorp.com/pages/viewpage.action?pageId=124048271
+        is_active: 
+          type: boolean
+          required: true
+          default: false
+        name: 
+          type: string
+          required: true
+          default: PR_VLD_test_XX
+        keywords:
+          #type: array
+          #description: keywords array
+          #items:
+          #    properties:
+          #        keyword:
+          #           type: string
+          #            description: name of the keyword commented
+          #            default: Example Keyword
+          #example: 
+          #  - keyword: Keyword_test1
+          #  - keyword: Keyword_test2
+          type: String
+          description: keywords array
+          default: ["keyword_testX", "keyword_testX"]
+        notifications:
+          type: array
+          description: notifications array
+          items:
+            properties:
+              email_addresses:
+                type: string
+                description: email address to be notified
+                default: analyticsengineeringoperations@homeaway.com
+              notify_if_error:
+                type: bool
+                description: notify if error ?
+                default: false
+              notify_if_failure:
+                type: bool
+                description: notify if failure ?
+                default: false
+              notify_if_success:
+                type: bool
+                description: notify if success ?
+                default: false
+        parameters:
+          type: array
+          description: parameters array
+          items:
+            properties:
+              parameter_name:
+                type: string
+                description: name of the parameter
+              parameter_value:
+                type: string
+                description: value of the parameter
+          example:
+            - parameter_name: vc_name
+              parameter_value: PR_VLD_test_XX
+            - parameter_name: connection
+              parameter_value: MSSQL DEV
+
+        severity_level_id: 
+          type: integer
+          required: true
+          default: 5
+        team_id: 
+          type: integer
+          required: true
+          default: 7
+        validator_id: 
+          type: integer
+          required: true
+          default: 1
+          
+produces:
+  application/json
+
+responses:
+  200:
+    description: created new validation check
+    schema:
+      properties:
+        name:
+           type: string
+           description: Validation Check Name
+           default: "PR_VLD_3PD_not_in_Quote"
+        description:
+           type: string
+           description: description of the vc
+           default: "Validation Check Description"
+        dataset_id:
+           type: number
+           description: id of the dataset
+           default: 0
+        id:
+           type: number
+           description: id of the validation check
+           default: 0
+        dimension_id:
+           type: number
+           description: id of the dimension
+           default: 0
+        documentation_url:
+           type: string
+           description: URL of the documentation
+           default: "https://wiki.homeawaycorp.com/pages/viewpage.action?pageId=124048271"
+        is_active:
+           type: bool
+           description: is active ?
+           default: false
+        keywords:
+           type: array
+           description: keywords array
+           items:
+               properties:
+                   id:
+                       type: number
+                       description: id of the keyword
+                       default: 0
+                   keyword:
+                       type: string
+                       description: name of the keyword post
+                       default: Heartbeat
+        notifications:
+           type: array
+           description: notifications array
+           items:
+               properties:
+                   email_addresses:
+                       type: string
+                       description: email address to be notified
+                       default: analyticsengineeringoperations@homeaway.com
+                   id:
+                       type: number
+                       description: id of the notification
+                       default: 0
+                   notify_if_error:
+                       type: bool
+                       description: notify if error ?
+                       default: false
+                   notify_if_failure:
+                       type: bool
+                       description: notify if failure ?
+                       default: false
+                   notify_if_success:
+                       type: bool
+                       description: notify if success ?
+                       default: false
+        parameters:
+           type: array
+           description: parameters array
+           items:
+               properties:
+                   id:
+                       type: number
+                       description: id of the parameter
+                       default: 0
+                   parameter_name:
+                       type: string
+                       description: name of the parameter
+                       default: "parameter_name"
+                   parameter_value:
+                       type: string
+                       description: value of the parameter
+                       default: "parameter_value"
+        severity_level_id:
+           type: number
+           description: id of the severity level
+           default: 0
+        team_id:
+           type: number
+           description: id of the team
+           default: 0
+        validator_id:
+           type: number
+           description: id of the validator
+           default: 0
+  401:
+    description: Audatar Login endpoint
+    schema:
+      properties:
+        flag:
+          type: string
+          description: fail ?
+          default: fail
+        msg:
+          type: string
+          description: login fail message
+          default: "Login failed"

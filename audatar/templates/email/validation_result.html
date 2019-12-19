@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {border-collapse: collapse;}
+        table, th, td {border: 1px solid black; padding: 5px;}
+        th {background-color: #ADD8E6;}
+        h5 {color: blue;}
+    </style>
+</head>
+<body>
+
+    <h5>Description of Validation Check : </h5>
+
+        <h3>Input Parameters:</h3>
+        <table>
+            <tr>
+            {% for k in vci_input %}
+                <th>{{ k }}</th>
+            {% endfor %}
+            </tr>
+            <tr>
+                {% for row in vci_input %}
+                <td>{{ vci_input[row] }}</td>
+                {% endfor %}
+            </tr>
+        </table>
+
+    <h3>Validation Check Instance Details: [Id : {{vci.id}}]</h3>
+        <table>
+             <tr>
+                 <th>Validation Check Id</th>
+                 <th>Task Id</th>
+                 <th>Result</th>
+                 <th>Results Count</th>
+                 <th>Time Submitted</th>
+                 <th>Time Started</th>
+                 <th>Time Completed</th>
+                 <th>Created By</th>
+             </tr>
+
+             <tr>
+                 <td>{{ vci.vc_id }}</td>
+                 <td>{{ vci.task_id }}</td>
+                 <td>{{ vci.result }}</td>
+                 <td>{{ vci.count }}</td>
+                 <td>{{ vci.time_submitted }}</td>
+                 <td>{{ vci.time_started }}</td>
+                 <td>{{ vci.time_completed }}</td>
+                 <td>{{ vci.created_by }}</td>
+             </tr>
+        </table>
+
+
+    <h1>Results:</h1>
+        <table>
+            <tr>
+            {% for h in header %}
+                <th>{{ h }}</th>
+            {% endfor %}
+            </tr>
+             {% for row in data %}
+            <tr>
+                {% for val in row %}
+                <td>{{ val }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+
+        </table>
+
+</body>
+</html>

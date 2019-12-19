@@ -1,0 +1,31 @@
+Detailed validation check by id.
+---
+tags:
+  - Validation Checks
+parameters:
+    - name: id
+      in: "path"
+      description: validation check ID
+      required: true
+      type: integer
+responses:
+  200:
+    description: Deleted validation check by id
+    schema:
+      properties:
+        message:
+            type: string
+            description: vc deletion success message 
+            default: "Validation Check 0 successfully deleted"
+  404:
+    description: Detailed validation check by id
+    schema:
+      properties:
+        id:
+            type: number
+            description: id of Validation Check
+            default: 0
+        message:
+            type: string
+            description: error message
+            default: "Validation Check Error Message"

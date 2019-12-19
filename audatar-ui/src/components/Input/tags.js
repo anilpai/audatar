@@ -1,0 +1,16 @@
+export const TAGS = [
+  "legacy_edw",
+  "sqlserver_data_replication",
+  "fast_data_analytics",
+  "rover",
+  "rover_core_data_cube",
+  "rover_partner_success_optimization_cube",
+  "rover_retail_event_cube",
+  "rover_retail_stay_cube",
+  "heartbeat",
+  "cloud_spend",
+  "business_booking_event",
+  "gdpr_fogrgetme",
+  "heartbeat",
+  "fastAnalytics",
+];

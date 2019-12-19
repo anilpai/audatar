@@ -1,0 +1,55 @@
+Login to the Audatar.
+---
+tags:
+  - Login
+parameters:
+  - name: credentials
+    in: body
+    required: true
+    schema:
+      id: data_login
+      properties:
+        username:
+          type: string
+          required: true
+          default: "audatar"
+        password:
+          type: string
+          required: true
+          default: "audatar"
+produces:
+  application/json
+
+responses:
+  200:
+    description: Audatar Login endpoint
+    schema:
+      properties:
+        flag:
+          type: string
+          description: pass ?
+          default: pass
+        exp:
+          type: number
+          description: token expiration (in unix time)
+          default: 1518723386729
+        token:
+          type: string
+          description: JWT string
+          default: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFwYWkiLCJleHAiOjE1MTg3MjMzODZ9.4caQzT0WstVMNxT_rnNQzZvR_OPWEC7LwAH8OM2ZUqE
+        username:
+          type: string
+          description: HA username
+          default: ha-analytics
+  401:
+    description: Audatar Login endpoint
+    schema:
+      properties:
+        flag:
+          type: string
+          description: fail ?
+          default: fail
+        msg:
+          type: string
+          description: login fail message
+          default: "Login failed"

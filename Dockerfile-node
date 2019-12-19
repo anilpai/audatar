@@ -1,0 +1,38 @@
+FROM ds.homeawaycorp.com/ha-docker/mininode:1.0.0
+MAINTAINER Anil Pai <apai@homeaway.com>
+
+ENV APP_NAME audatar-ui
+ENV APP_HOME /usr/local/homeaway/${APP_NAME}
+ENV APP_LOGS ${APP_HOME}/logs
+
+ENV NODE_PORT 5000
+EXPOSE ${NODE_PORT}
+
+COPY audatar-ui ${APP_HOME}/audatar-ui
+COPY setup_scripts ${APP_HOME}/setup_scripts
+COPY audatar/utils/vault ${APP_HOME}/audatar/utils/vault
+COPY favicon.ico ${APP_NAME}/favicon.ico
+COPY write_secrets_file.py ${APP_HOME}/write_secrets_file.py
+
+RUN apt-get dist-upgrade
+
+RUN apt-get update && apt-get install -y build-essential python3 apt-utils sudo curl apt-transport-https && \
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+    apt-get update && apt-get -y install yarn && \
+    apt-get autoremove -y && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+
+RUN mkdir -p ${APP_LOGS} && sync
+VOLUME ${APP_LOGS}
+WORKDIR ${APP_HOME}/audatar-ui
+
+# Setup Container Pilot config
+
+COPY containerpilot_ui.json /etc/containerpilot.json
+ENV CONTAINERPILOT=file:///etc/containerpilot.json
+
+
+CMD ["containerpilot", "../setup_scripts/run_node_app.sh"]

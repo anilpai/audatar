@@ -1,0 +1,55 @@
+Run Validation Check.
+---
+tags:
+  - Run Validation Check
+parameters:
+  - name: validation
+    in: body
+    required: true
+    schema:
+      id: data_runvc
+      properties:
+        validation_check_id:
+          type: number
+          required: true
+          default: 0
+        opts_params:
+          type: string
+          required: true
+          default: {}
+produces:
+  application/json
+
+responses:
+  200:
+    description: 
+    schema:
+      properties:
+        flag:
+          type: string
+          description: Success ?
+          default: Success
+        vci_id:
+          type: number
+          description: new vci id
+          default: 0
+        task_id:
+          type: string
+          description: new task
+          default: "97ca4116-d262-4444-5135-99999example"
+        task_status:
+          type: string
+          description: vci status
+          default: PENDING
+  404:
+    description: runVC endpoint
+    schema:
+      properties:
+        flag:
+          type: string
+          description: fail ?
+          default: fail
+        message:
+          type: string
+          description: runVC fail message
+          default: "Please provide a valid validation_check_id or validation_check_name"

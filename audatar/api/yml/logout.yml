@@ -1,0 +1,29 @@
+Logout to the Audatar.
+---
+tags:
+  - Logout
+
+produces:
+  application/json
+
+responses:
+  200:
+    description: Audatar Logout endpoint
+    schema:
+      properties:
+        flag:
+          type: string
+          description: success ?
+          default: success
+        msg:
+          type: string
+          description: message
+          default: Logged out
+  401:
+    description: Audatar Logout endpoint
+    schema:
+      properties:
+        message:
+          type: string
+          description: logout fail message
+          default: "Invalid token"

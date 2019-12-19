@@ -1,0 +1,9 @@
+FROM dl2.homeawaycorp.com/analyticsengineering/ae-audatar-base
+
+# Setup Container Pilot config
+
+COPY containerpilot_flower.json /etc/containerpilot.json
+ENV CONTAINERPILOT=file:///etc/containerpilot.json
+
+
+CMD ["containerpilot", "./setup_scripts/run_flower_app.sh"]

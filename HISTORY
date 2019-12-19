@@ -1,0 +1,132 @@
+Changelog
+=========
+
+These are all the changes in Audatar since the 0.9.0 release
+reverse to a last good commit.
+
+0.9.8
+---
+
+- Added Typeahead UI component to search dataset using dataset API.
+- Added Readonly field to display dataset UUID & dataset name (Completed. ITDATAPLAT-2503)
+- Link next to dataset_uuid should be displayed to take the user to see the dataset within Data Explorer. (ITDATAPLAT-2493)
+- Extended task_executor code to update a new table entry "to sent_to_validation_registry”on success.  (ITDATAPLAT-2448)
+- Add tags, delete tags, drag & drop tags, improved CSS, hardcoded set of tags to provide suggestions. (ITDATAPLAT-2577)
+- Enable Feedback link for Audatar on top right corner.
+- Stripped tags & created new dataset API calls.
+- Added algolia related APIs to make dataset/uuid calls.
+- HOTFIX: Fixing package files to prepare for deployment.
+- HOTFIX: Fixed issue with data_explorer_url in the tooltip.
+
+0.9.7
+---
+
+- Set up Celery Beat scheduler and added few clean up tasks.
+- Implemented a new feature to add tags for every validation check.
+- Removed LDAP groups to open Audatar to everyone at HomeAway.
+- Added Algolia API URL and Validation Registry URL. (SPAWG-VARIABLE)
+- Changes to Validation check, added deviation & difference . (ITDATAPLAT-2185)
+- Attribute name changes: Team to Portfolio, Dataset Name to Dataset UUID. (ITDATAPLAT-2185)
+- Validation Registry result object key name changes: runStatus to lastRunStatus. (ITDATAPLAT-2254)
+- Remove dataset table related code dependencies.
+- Updated requirements.txt and updated Dockerfile.
+- HOTFIX: Script to backfill validation registry for the last N days.
+- HOTFIX: Replaced a deprecated Jenkins function.
+- HOTFIX: Add vci_result_url to Validation Registry result object.
+- HOTFIX: divide by zero fix.
+- HOTFIX: Fixed VCI Info page with vci summary details.
+- HOTFIX: Added Input table to VCI Info page.
+
+
+0.9.6
+---
+
+- Added Notification API endpoint (send_ds) to send data results to Data Registry.
+- Updated helper.py with data registry related functions.
+- Multiple Audatar UI changes to make it compatible with Data Registry. (Dataset UUID added)
+- VC and VCI Search Pages updated to enable search by Dataset UUID.
+- Modified Task Executor to send results to Data Registry.
+- Validation check model : dataset_id is now a string and dataset is removed.
+- Added valid groups to Flask Admin to enable easier user access using LDAP groups.
+- HOTFIX: lastRun attribute is expected to be a type of UNIX timestamp.
+- HOTFIX: color fix relating to runStatus.
+- HOTFIX: Fixed Issues relating to Great Expectations Validator.
+
+0.9.5
+---
+
+- Added Great Expectations Validator.
+- Added time_updated and updated_by attributes to multiple models (Validation Check, Validation Check Parameters & Notifications).
+- Replaced default Flask server with highly scalable gunicorn server.
+- Added mail_server attribute to vault secrets on all environments.
+- Improved Logging.
+- Added delete_vci endpoint to Validation Check Instance.
+- Refactored functions update_vci_by_task_id and update_vci_id.
+- Fix JDBC type conversion issues by replacing jaydebeapi with ha_jaydebeapi.
+- Added requests_retry_session() to helper.py to make retries if 5XX.
+- Added exceptions.py to utils to handle certain exceptions.
+- Refactored exception handling for all validators.
+- Switch thrift_sasl to v0.3.0.
+
+0.9.4
+---
+- Email delivery issue. AE-10396
+- HOTFIX: Validation Check Instance status. AE-10379
+
+0.9.3
+---
+- Worker need to update Task Status from Submitted to Started. AE-7884
+- Use a more scalable web server instead of the Flask built-in server. AE-4640
+- Logging improvement by getting more input from all api’s and by standardizes message for easier querying. AE-7630
+- Able to connect to validation check instances page by passing vci id. AE-7334
+- Modify SQL Data Comparison validator to add Tolerance Percentage to the checks. AE-7329
+
+0.9.2
+-----
+- Create a vci/id page (AE-7342)
+- Deploy Workers, UI and API to multipaas (AE-6971)
+- Refactor Monitor (AE-6931)
+- Push API events in Datadog (AE-6540)
+
+0.9.1
+-----
+- Logout. jwt_token's life must end on logout on the server (AE-6442)
+- Change code to look up for valid AD groups from Database (AE-7018)
+- Improve Application logging (AE-6344)
+- Post full json result for webhook (AE-6923)
+- HOTFIX: VC PUT method is inserting parameters instead of updating existing (AE-6662)
+- HOTFIX: Validation check instance return an error in UI while execution is not completed (AE-6825)
+- HOTFIX: VC put api is not updating parameters when changing validator (AE-7288)
+- HOTFIX: when you click on first "delete" it deletes all notifications records in UI (AE-7328)
+
+0.9.0
+-----
+- Create UI web page to list connections from Postgres DB (AE-5620)
+- Document REST API using Swagger (AE-2102, AE-6251)
+- Configure Audatar to have Admin and non-admin roles (AE-6099)
+- Application Monitoring : Update monitor.py to include WorkerOfflineNotificationEmail (AE-6130, AE-6322)
+- Create a Dev branch for ae-audatar on github (AE-6225)
+- Added Vault Integration (removed unwanted dependency -> ha-api-utils)
+- Security fixes for Flask admin and Flower UI (AE-6309, AE-6310)
+- Fix bug to open link Create Validation Check (AE-6342)
+- Add parameter to return default message in text area field (AE-6295)
+- Add option to send results to external REST APIs (AE-6313)
+- HOTFIX: Create trusted SSL cert and DNS entry for Audatar (AE-4526)
+- HOTFIX: Validation check name missing from email (AE-5740)
+- HOTFIX: Validation check page is making all parameters required when some are not required (AE-6160)
+- HOTFIX: ConnectionField class is not returning all connection names (AE-6161)
+- HOTFIX: Validation checks should be more descriptive and not contain PR_VLD in the title (AE-6162)
+- HOTFIX: Validation checks have invalid team ownership (AE-6163)
+- HOTFIX: VCI details page cuts off input parameters (AE-6164)
+- HOTFIX: VCI page sort issue – not sorted by submitted date when searching by name (AE-6166)
+- HOTFIX: Record count validator result records should be two columns: Table 1 Count and Table 2 Count (AE-6167)
+- HOTFIX: Clean up dataset value for Validation checks (AE-6169)
+- HOTFIX: Fix Delete Validationcheck endpoint to delete data related to vc (AE-6174)
+- HOTFIX: Adding list of required parameters in the validator API so the UI knows which parameters are required (AE-6195)
+- HOTFIX: Audatar validation check add/edit screen bugs (AE-6196)
+- HOTFIX: Getting an error on sqldatavalidator validation check with Qubole AE PROD connection (AE-6304)
+- HOTFIX: Issue with capturing Pass/ Fail status on sqldatavalidator (AE-6330)
+- HOTFIX: Modify the s3 folder validator (AE-6384)
+- HOTFIX: Fix bug with jdbc connection queries returning bigints (by @gnicholas)
+- HOTFIX: Issue creating a new Validation Check for Legacy EDW Validator (AE-6485)
+

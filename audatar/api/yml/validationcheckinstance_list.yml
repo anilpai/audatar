@@ -1,0 +1,103 @@
+List of all validation check instances.
+---
+tags:
+- Validation Check Instances
+responses:
+  200:
+    description: List of all validation check instances
+    schema:
+      properties:
+        count:
+          type: number
+          description: number of results
+          default: 0
+        data:
+          type: array
+          description: vci array
+          items:
+            properties:
+                created_by:
+                    type: string
+                    description: Creation user
+                    default: "user"
+                input:
+                    type: string
+                    description: VCI input
+                    default: "{\n    \"connection\": \"EDW MSSQL\",\n    \"vc_name\": \"PR_VLD_Example\"\n}"
+                result:
+                    type: string
+                    description: VCI result from pass condition
+                    default: "Pass"
+                id:
+                    type: number
+                    description: id of the validation check instance
+                    default: 0
+                result_count:
+                    type: number
+                    description: Number of records from vci results
+                    default: 0
+                result_records:
+                    type: string
+                    description: VCI result records
+                    default: "{\n    \"schema\": {\n        \"columns\": {\n            \"output\": \"str\"\n        },\n        \"colOrder\": [\n            \"output\"\n        ]\n    },\n    \"data\": [\n        {\n            \"output\": \"Count table  table_1: 1185. Count table table_2: 1185\"\n        }\n    ]\n}"
+                status:
+                    type: string
+                    description: VCI status
+                    default: "Success"
+                task_id:
+                    type: string
+                    description: Task Id from celery
+                    default: "97ca4116-d262-4444-5135-99999example"
+                time_completed:
+                    type: datetime
+                    description: Task commpletion time
+                    default: "2018-03-02T20:28:15+00:00"
+                time_started:
+                    type: datetime
+                    description: Task running starting time
+                    default: "2018-03-02T20:28:04+00:00"
+                time_submitted:
+                    type: datetime
+                    description: Task submitting time
+                    default: "2018-03-02T20:28:04+00:00"
+                validation_check_id:
+                    type: number
+                    description: id of the validation check
+                    default: 0
+                vc:
+                    schema:
+                        properties:
+                            dataset:
+                                schema:
+                                    properties:
+                                        name:
+                                            type: string
+                                            description: VC Dataset
+                                            default: "Quote"
+                            dataset_id:
+                                type: number
+                                description: Validation check Dataset ID
+                                default: 0
+                            name:
+                                type: string
+                                description: Validation check name
+                                default: "PR_VLD_Example"
+                            team:
+                                schema:
+                                    properties:
+                                        name:
+                                            type: string
+                                            description: Validation check Team
+                                            default: "Analytics Engineering Core"
+                            team_id:
+                                type: number
+                                description: Validation check Team ID
+                                default: 0
+        pageNumber:
+            type: number
+            description: the current pageNumber
+            default: 0
+        pageSize:
+            type: number
+            description: number of results on the current page
+            default: 0

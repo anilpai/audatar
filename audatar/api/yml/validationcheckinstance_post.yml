@@ -1,0 +1,137 @@
+Create new Validation Check Instance.
+---
+tags:
+- Validation Check Instances
+parameters:
+  - name: new_validation_instance
+    in: body
+    required: true
+    schema:
+      id: data_vci
+      properties:
+        task_id: 
+          type: string
+          required: true
+          default: "97ca4116-d262-4444-5135-99999example"
+        validation_check_id:
+          type: number
+          required: true
+          default: 0
+        input:
+          type: string
+          required: true
+          default: "{\n    \"connection\": \"EDW MSSQL\",\n    \"vc_name\": \"PR_VLD_Example\"\n}"
+        time_completed:
+          type: datetime
+          required: false
+          default: ""
+        time_started:
+          type: datetime
+          required: false
+          default: ""
+        time_submitted:
+          type: datetime
+          required: true
+          default: "2018-03-02T20:28:04+00:00"
+        status: 
+          type: string
+          required: true
+          default: Submitted
+        result_records: 
+          type: string
+          required: false
+          default: ""
+        result: 
+          type: string
+          required: false
+        result_count: 
+          type: number
+          required: false
+        created_by: 
+          type: string
+          required: true
+          default: user 
+produces:
+  application/json
+responses:
+  200:
+    description: Detailed validation check instance by id
+    schema:
+      properties:
+                created_by:
+                    type: string
+                    description: Creation user
+                    default: "user"
+                input:
+                    type: string
+                    description: VCI input
+                    default: "{\n    \"connection\": \"EDW MSSQL\",\n    \"vc_name\": \"PR_VLD_Example\"\n}"
+                result:
+                    type: string
+                    description: VCI result from pass condition
+                    default: "Pass"
+                id:
+                    type: number
+                    description: id of the validation check instance
+                    default: 0
+                result_count:
+                    type: number
+                    description: Number of records from vci results
+                    default: 0
+                result_records:
+                    type: string
+                    description: VCI result records
+                    default: "{\n    \"schema\": {\n        \"columns\": {\n            \"output\": \"str\"\n        },\n        \"colOrder\": [\n            \"output\"\n        ]\n    },\n    \"data\": [\n        {\n            \"output\": \"Count table  table_1: 1185. Count table table_2: 1185\"\n        }\n    ]\n}"
+                status:
+                    type: string
+                    description: VCI status
+                    default: "Success"
+                task_id:
+                    type: string
+                    description: Task Id from celery
+                    default: "97ca4116-d262-4444-5135-99999example"
+                time_completed:
+                    type: datetime
+                    description: Task commpletion time
+                    default: "2018-03-02T20:28:15+00:00"
+                time_started:
+                    type: datetime
+                    description: Task running starting time
+                    default: "2018-03-02T20:28:04+00:00"
+                time_submitted:
+                    type: datetime
+                    description: Task submitting time
+                    default: "2018-03-02T20:28:04+00:00"
+                validation_check_id:
+                    type: number
+                    description: id of the validation check
+                    default: 0
+                vc:
+                    schema:
+                        properties:
+                            dataset:
+                                schema:
+                                    properties:
+                                        name:
+                                            type: string
+                                            description: VC Dataset
+                                            default: "Quote"
+                            dataset_id:
+                                type: number
+                                description: Validation check Dataset ID
+                                default: 0
+                            name:
+                                type: string
+                                description: Validation check name
+                                default: "PR_VLD_Example"
+                            team:
+                                schema:
+                                    properties:
+                                        name:
+                                            type: string
+                                            description: Validation check Team
+                                            default: "Analytics Engineering Core"
+                            team_id:
+                                type: number
+                                description: Validation check Team ID
+                                default: 0

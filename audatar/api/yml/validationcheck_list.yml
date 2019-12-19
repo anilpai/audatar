@@ -1,0 +1,121 @@
+List of all validation checks.
+---
+tags:
+- Validation Checks
+responses:
+  200:
+    description: List of all validation checks
+    schema:
+      properties:
+        count:
+          type: number
+          description: number of results
+          default: 0
+        data:
+          type: array
+          description: vc array
+          items:
+            properties:
+                name:
+                    type: string
+                    description: Validation Check Name
+                    default: "PR_VLD_3PD_not_in_Quote"
+                description:
+                    type: string
+                    description: description of the vc
+                    default: "Validation Check Description"
+                dataset_id:
+                    type: number
+                    description: id of the dataset
+                    default: 0
+                id:
+                    type: number
+                    description: id of the validation check
+                    default: 0
+                dimension_id:
+                    type: number
+                    description: id of the dimension
+                    default: 0
+                documentation_url:
+                    type: string
+                    description: URL of the documentation
+                    default: "https://wiki.homeawaycorp.com/pages/viewpage.action?pageId=124048271"
+                is_active:
+                    type: bool
+                    description: is active ?
+                    default: false
+                keywords:
+                    type: array
+                    description: keywords array
+                    items:
+                        properties:
+                            id:
+                                type: number
+                                description: id of the keyword
+                                default: 0
+                            keyword:
+                                type: string
+                                description: name of the keyword list
+                                default: Heartbeat
+                notifications:
+                    type: array
+                    description: notifications array
+                    items:
+                        properties:
+                            email_addresses:
+                                type: string
+                                description: email address to be notified
+                                default: analyticsengineeringoperations@homeaway.com
+                            id:
+                                type: number
+                                description: id of the notification
+                                default: 0
+                            notify_if_error:
+                                type: bool
+                                description: notify if error ?
+                                default: false
+                            notify_if_failure:
+                                type: bool
+                                description: notify if failure ?
+                                default: false
+                            notify_if_success:
+                                type: bool
+                                description: notify if success ?
+                                default: false
+                parameters:
+                    type: array
+                    description: parameters array
+                    items:
+                        properties:
+                            id:
+                                type: number
+                                description: id of the parameter
+                                default: 0
+                            parameter_name:
+                                type: string
+                                description: name of the parameter
+                                default: "parameter_name"
+                            parameter_value:
+                                type: string
+                                description: value of the parameter
+                                default: "parameter_value"
+                severity_level_id:
+                    type: number
+                    description: id of the severity level
+                    default: 0
+                team_id:
+                    type: number
+                    description: id of the team
+                    default: 0
+                validator_id:
+                    type: number
+                    description: id of the validator
+                    default: 0
+        pageNumber:
+            type: number
+            description: the current pageNumber
+            default: 0
+        pageSize:
+            type: number
+            description: number of results on the current page
+            default: 0

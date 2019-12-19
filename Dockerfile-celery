@@ -1,0 +1,8 @@
+FROM dl2.homeawaycorp.com/analyticsengineering/ae-audatar-base
+
+# Setup Container Pilot config
+
+COPY containerpilot.json /etc/containerpilot.json
+ENV CONTAINERPILOT=file:///etc/containerpilot.json
+
+CMD ["containerpilot", "./setup_scripts/run_celery_app.sh"]

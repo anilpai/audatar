@@ -3,9 +3,9 @@
 </div>
 
 
-# ae-audatar
+# audatar
 
-Project Audatar - a data validation framework for creating and running data validation checks to ensure data accuracy and completeness across multiple data sources.
+Project Audatar - a data validation framework for creating and running data validation checks to ensure data accuracy and completeness across multiple data sources. This project was built to check data quality issues after migration from on-premise to cloud.
 
 
 ### Screenshots

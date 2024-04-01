@@ -1,11 +1,7 @@
 <div align="center">
-  <a href="https://wiki.homeawaycorp.com/display/IS/Audatar+for+Data+Validations"> <img width="150px" height="150px" src="/docs/images/audatar_logo.png"></a>
+  <img width="150px" height="150px" src="/docs/images/audatar_logo.png">
 </div>
 
-
-----------------------------------------------------------------
-
-[![Build Status](https://audatar2-offroad.jenkins.homeawaycorp.com/job/AnalyticsEngineering/job/ae-audatar/job/release/badge/icon)](https://audatar2-offroad.jenkins.homeawaycorp.com/job/AnalyticsEngineering/job/ae-audatar/job/release/)
 
 # ae-audatar
 
@@ -27,9 +23,3 @@ Project Audatar - a data validation framework for creating and running data vali
 
 ![Flower Monitor](/docs/images/flower_monitor.png?raw=true "Flower Monitor")
 
-
-### Who Owns This?
-
-ae-audatar is maintained by the fine folks over at
-
-team: Analytics Engineering Operations , slack: #audatar , JIRA: Analytics Engineering - Data Validation , email: analyticsengineeringoperations@groups.homeawaycorp.com
